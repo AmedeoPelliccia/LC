@@ -98,9 +98,9 @@ These are **institutional checks** specific to ATA 21 (they do not change the 7-
 Any object with `ata_chapter` starting `21-` **MUST** have `parent_object_id` resolving upward to `ECS-21`.
 
 ```
-Violation: Object PCC-21-30-001 has ata_chapter "21-30" but parent_object_id 
+Violation: Object PCC-21-30-001 has ata_chapter "21-30" but parent_object_id
            does not trace to ECS-21.
-Action: Correct parent_object_id to establish valid hierarchy.
+Action:    Correct parent_object_id to establish valid hierarchy.
 ```
 
 ### 4.2 Safety Relevance Defaults

@@ -80,6 +80,8 @@ The framework includes reference decompositions for ATA chapters with canonical 
 |-------------|--------|-----------|
 | ATA 21 | Environmental Control System (ECS) | [Reference Schema](references/ata21/ata21-reference-schema.md) |
 
+*Additional ATA chapters will be added as the framework expands.*
+
 See [`examples/`](examples/) for schema-compliant JSON object instances.
 
 ## Compliance Outputs

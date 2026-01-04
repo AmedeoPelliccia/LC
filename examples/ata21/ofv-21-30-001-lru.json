@@ -11,7 +11,7 @@
     "name": "Outflow Valve Assembly",
     "ata_chapter": "21-30",
     "parent_object_id": "ECS-21-30",
-    "part_number": "TBD",
+    "part_number": "PN-XXXX-XXXX",
     "safety_relevant": true,
     "design_assurance_level": "DAL-C"
   },
