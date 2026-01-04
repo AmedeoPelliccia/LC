@@ -1,0 +1,18 @@
+env_refs:
+  ata_chapter: "05"
+  program: "AMPEL360-AIR-T"
+
+  operational_context:
+    time_bases_supported:
+      - "FlightHours"
+      - "FlightCycles"
+      - "CalendarDays"
+      - "CalendarMonths"
+    timezone_policy: "UTC"          # avoid DST ambiguity in compliance computations
+    rounding_policy_ref: "POL-ATA05-ROUND-001"
+
+  assumptions:
+    - id: "ASSUMP-ATA05-0001"
+      statement: "Maintenance interval calculations are performed in UTC with signed timestamps."
+    - id: "ASSUMP-ATA05-0002"
+      statement: "Effectivity is expressed as fleet/variant/MSN rules and is version-controlled."

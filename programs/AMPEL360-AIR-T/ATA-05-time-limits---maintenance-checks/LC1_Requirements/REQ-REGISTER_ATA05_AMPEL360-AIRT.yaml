@@ -1,0 +1,148 @@
+requirements_register:
+  program: "AMPEL360-AIR-T"
+  ata_chapter: "05"
+  issue_rev: "I01-R01"
+  status: "DRAFT"
+  owner_aor: "STK_SE"
+
+  requirements:
+
+    - requirement_id: "REQ-ATA05-0001"
+      title: "Scheduled task program baseline"
+      text: >
+        The program shall define and maintain a controlled baseline of scheduled maintenance tasks
+        (time limits and checks) including interval, threshold, and effectivity.
+      type: "Functional"
+      level: "System"
+      allocated_to_object_ids: ["ATA05-Program"]
+      safety:
+        safety_relevant: false
+        classification: "No_Safety_Effect"
+        derived_dal: "N/A"
+      materials:
+        material_applicability: "N/A"
+      verification_plan:
+        verification_methods: ["Inspection"]
+        acceptance_criteria:
+          - "Baseline task list exists and is configuration-controlled"
+          - "Each task contains interval definition and effectivity"
+        evidence_placeholders: ["EVID-ATA05-BASELINE-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA05-0002"
+      title: "Interval definition structure"
+      text: >
+        The ATA 05 data model shall support interval definitions in flight hours, flight cycles,
+        calendar time, and mixed rules, including boundary conditions and rounding logic.
+      type: "Interface"
+      level: "Software"
+      allocated_to_object_ids: ["ATA05-DataModel"]
+      safety:
+        safety_relevant: true
+        classification: "Minor"
+        derived_dal: "N/A"
+      materials:
+        material_applicability: "No"
+      verification_plan:
+        verification_methods: ["Analysis"]
+        acceptance_criteria:
+          - "Interval model covers FH/FC/Calendar/Mixed"
+          - "Edge cases: leap years, DST-independent calendar logic, rounding rules"
+        evidence_placeholders: ["AN-ATA05-DATAMODEL-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA05-0003"
+      title: "Escalation rules for overdue tasks"
+      text: >
+        The system shall implement auditable escalation rules for approaching and overdue
+        maintenance tasks, including operational limitations and approval workflow.
+      type: "Safety"
+      level: "System"
+      allocated_to_object_ids: ["ATA05-OpsRules"]
+      safety:
+        safety_relevant: true
+        classification: "Major"
+        derived_dal: "DAL-D"
+        hazard_ids: ["HAZ-ATA05-0007"]
+      materials:
+        material_applicability: "N/A"
+      verification_plan:
+        verification_methods: ["Analysis", "Inspection"]
+        acceptance_criteria:
+          - "Escalation thresholds defined and versioned"
+          - "Overdue actions require explicit approval record with expiry"
+        evidence_placeholders: ["AN-ATA05-ESC-001", "EVID-ATA05-ESC-LOGIC-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA05-0004"
+      title: "MSG-3 traceability"
+      text: >
+        Each scheduled maintenance task in ATA 05 shall be traceable to a maintenance planning
+        rationale consistent with MSG-3 logic (or approved equivalent).
+      type: "Compliance"
+      level: "System"
+      allocated_to_object_ids: ["ATA05-Planning"]
+      safety:
+        safety_relevant: true
+        classification: "Minor"
+        derived_dal: "N/A"
+      materials:
+        material_applicability: "N/A"
+      verification_plan:
+        verification_methods: ["Inspection"]
+        acceptance_criteria:
+          - "Every task links to MSG-3 decision rationale or approved equivalent"
+        evidence_placeholders: ["EVID-ATA05-MSG3-TRACE-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA05-0005"
+      title: "Publication compatibility"
+      text: >
+        ATA 05 maintenance program outputs shall be publishable into the approved technical publication
+        format set (e.g., S1000D and/or ATA iSpec), preserving effectivity and revision control.
+      type: "Interface"
+      level: "Document"
+      allocated_to_object_ids: ["ATA05-Docs"]
+      safety:
+        safety_relevant: false
+        classification: "No_Safety_Effect"
+        derived_dal: "N/A"
+      materials:
+        material_applicability: "N/A"
+      verification_plan:
+        verification_methods: ["Demonstration"]
+        acceptance_criteria:
+          - "Export produces valid publication package"
+          - "Effectivity and revision are preserved"
+        evidence_placeholders: ["DEMO-ATA05-PUB-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
