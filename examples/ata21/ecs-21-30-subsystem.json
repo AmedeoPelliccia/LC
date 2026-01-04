@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "schema_version": "1.0.0",
+    "created_date": "2026-01-04",
+    "authority": "Engineering Governance Board",
+    "applicable_standards": ["ARP4754A", "ARP4761", "CS-25"]
+  },
+  "object_definition": {
+    "object_id": "ECS-21-30",
+    "object_type": "Subsystem",
+    "name": "Pressurization Control Subsystem",
+    "ata_chapter": "21-30",
+    "parent_object_id": "ECS-21",
+    "safety_relevant": true,
+    "design_assurance_level": "DAL-B"
+  },
+  "lifecycle_states": {
+    "LC1_Requirements": { "status": "Not_Started" },
+    "LC2_Design": { "status": "Not_Started" },
+    "LC3_Analysis": { "status": "Not_Started" },
+    "LC4_Integration": { "status": "Not_Started" },
+    "LC5_Certification": { "status": "Not_Started" },
+    "LC6_Operation": { "status": "Not_Started" },
+    "LC7_Decommissioning": { "status": "Not_Started" }
+  }
+}

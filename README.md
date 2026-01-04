@@ -36,8 +36,16 @@ If a lifecycle phase does not apply to an object, it **MUST** be declared as **N
 ├── README.md                           # This file
 ├── schemas/
 │   └── lifecycle-7lc.schema.json       # JSON Schema for 7-LC model
-└── agents/
-    └── lifecycle-governance-agent.md   # Agent specification
+├── agents/
+│   └── lifecycle-governance-agent.md   # Agent specification
+├── references/
+│   └── ata21/
+│       └── ata21-reference-schema.md   # ATA 21 decomposition & conventions
+└── examples/
+    └── ata21/
+        ├── ecs-21-system.json          # ECS System object
+        ├── ecs-21-30-subsystem.json    # Pressurization Control Subsystem
+        └── ofv-21-30-001-lru.json      # Outflow Valve LRU
 ```
 
 ## Schema
@@ -63,6 +71,16 @@ The [Lifecycle & Governance Authority Agent](agents/lifecycle-governance-agent.m
 3. **Mandatory Traceability** — All artifacts trace to requirements
 4. **N/A Management** — Justified and approved exemptions only
 5. **Domain Separation** — Verification ≠ Validation, Certification is a legal state
+
+## ATA Reference Schemas
+
+The framework includes reference decompositions for ATA chapters with canonical hierarchies, object ID conventions, and example instances:
+
+| ATA Chapter | System | Reference |
+|-------------|--------|-----------|
+| ATA 21 | Environmental Control System (ECS) | [Reference Schema](references/ata21/ata21-reference-schema.md) |
+
+See [`examples/`](examples/) for schema-compliant JSON object instances.
 
 ## Compliance Outputs
 
