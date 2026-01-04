@@ -1,0 +1,330 @@
+requirements_register:
+  program: "AMPEL360-AIR-T"
+  ata_chapter: "21-10"
+  parent_object_id: "ECS-21"
+  object_type: "Subsystem"
+  issue_rev: "I01-R01"
+  status: "DRAFT"
+  owner_aor: "STK_SE"
+
+  requirements:
+
+    - requirement_id: "REQ-ATA21-10-0001"
+      title: "Bleed air mass flow capacity"
+      text: >
+        The air supply subsystem shall deliver a minimum bleed air mass flow of X kg/s
+        to downstream ECS consumers under all approved flight conditions.
+      type: "Performance"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-BleedSystem"]
+      safety:
+        safety_relevant: true
+        classification: "Minor"
+        derived_dal: "N/A"
+        hazard_ids: []
+      materials:
+        material_applicability: "Yes"
+        material_constraints: ["High-temperature alloys", "Corrosion-resistant"]
+      interfaces:
+        interface_refs: ["IF-ATA36-BLEED", "IF-ATA71-ENGINE", "IF-ATA21-20-PACK"]
+      verification_plan:
+        verification_methods: ["Test"]
+        acceptance_criteria:
+          - "Mass flow meets or exceeds specification at all flight phases"
+          - "Flow stability within acceptable variance"
+        evidence_placeholders: ["TR-ATA21-10-FLOW-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0002"
+      title: "Bleed air pressure regulation"
+      text: >
+        The air supply subsystem shall regulate bleed air pressure to within ±X% of the
+        specified setpoint across all operating conditions.
+      type: "Functional"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-PressureReg"]
+      safety:
+        safety_relevant: true
+        classification: "Major"
+        derived_dal: "DAL-C"
+        hazard_ids: ["HAZ-ATA21-10-0001"]
+      materials:
+        material_applicability: "Yes"
+        material_constraints: ["Pressure-rated components", "Fatigue-resistant"]
+      interfaces:
+        interface_refs: ["IF-ATA36-BLEED", "IF-ATA21-20-PACK"]
+      verification_plan:
+        verification_methods: ["Test", "Analysis"]
+        acceptance_criteria:
+          - "Pressure regulation within specified tolerance"
+          - "Transient response within acceptable limits"
+        evidence_placeholders: ["TR-ATA21-10-PRESS-001", "AN-ATA21-10-PRESS-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0003"
+      title: "Bleed air temperature limits"
+      text: >
+        The air supply subsystem shall ensure bleed air temperature does not exceed
+        the maximum allowable limit at downstream delivery points, with automatic
+        overheat protection.
+      type: "Safety"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-TempControl"]
+      safety:
+        safety_relevant: true
+        classification: "Hazardous"
+        derived_dal: "DAL-B"
+        hazard_ids: ["HAZ-ATA21-10-0002", "HAZ-ATA21-10-0003"]
+      materials:
+        material_applicability: "Yes"
+        material_constraints: ["High-temp rated", "Thermal insulation"]
+      interfaces:
+        interface_refs: ["IF-ATA71-ENGINE", "IF-ATA21-20-PACK", "IF-ATA46-CAUTION"]
+      verification_plan:
+        verification_methods: ["Test", "Analysis"]
+        acceptance_criteria:
+          - "Temperature never exceeds specified limit"
+          - "Overheat detection and shutdown demonstrated"
+        evidence_placeholders: ["TR-ATA21-10-TEMP-001", "AN-ATA21-10-TEMP-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0004"
+      title: "Contamination protection"
+      text: >
+        The air supply subsystem shall include filtration and detection provisions
+        to prevent contaminated bleed air from reaching cabin air supply.
+      type: "Safety"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-Filtration"]
+      safety:
+        safety_relevant: true
+        classification: "Major"
+        derived_dal: "DAL-C"
+        hazard_ids: ["HAZ-ATA21-10-0004"]
+      materials:
+        material_applicability: "Yes"
+        material_constraints: ["Filter media rated for operating conditions"]
+      interfaces:
+        interface_refs: ["IF-ATA71-ENGINE", "IF-ATA21-20-PACK", "IF-ATA46-CAUTION"]
+      verification_plan:
+        verification_methods: ["Test", "Inspection"]
+        acceptance_criteria:
+          - "Filtration efficacy meets specification"
+          - "Contamination detection triggers appropriate alert"
+        evidence_placeholders: ["TR-ATA21-10-FILT-001", "INSP-ATA21-10-FILT-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0005"
+      title: "Bleed air isolation capability"
+      text: >
+        The air supply subsystem shall provide automatic and manual isolation capability
+        to shut off bleed air supply in case of leak, overheat, or contamination.
+      type: "Safety"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-Isolation"]
+      safety:
+        safety_relevant: true
+        classification: "Hazardous"
+        derived_dal: "DAL-B"
+        hazard_ids: ["HAZ-ATA21-10-0002", "HAZ-ATA21-10-0004", "HAZ-ATA21-10-0005"]
+      materials:
+        material_applicability: "Yes"
+        material_constraints: ["Valve materials rated for max temp/pressure"]
+      interfaces:
+        interface_refs: ["IF-ATA71-ENGINE", "IF-ATA49-APU", "IF-ATA46-CAUTION"]
+      verification_plan:
+        verification_methods: ["Test", "Demonstration"]
+        acceptance_criteria:
+          - "Isolation valve closes within specified time"
+          - "Manual override functional"
+        evidence_placeholders: ["TR-ATA21-10-ISO-001", "DEMO-ATA21-10-ISO-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0006"
+      title: "Engine interface compatibility"
+      text: >
+        The air supply subsystem shall be compatible with the engine bleed port
+        interface specifications including mechanical, thermal, and pneumatic characteristics.
+      type: "Interface"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-EngineIF"]
+      safety:
+        safety_relevant: false
+        classification: "Minor"
+        derived_dal: "N/A"
+        hazard_ids: []
+      materials:
+        material_applicability: "Yes"
+        material_constraints: ["Compatible with engine materials"]
+      interfaces:
+        interface_refs: ["IF-ATA71-ENGINE", "IF-ATA72-BLEED-PORT"]
+      verification_plan:
+        verification_methods: ["Analysis", "Inspection"]
+        acceptance_criteria:
+          - "Interface compatibility confirmed per ICD"
+        evidence_placeholders: ["AN-ATA21-10-ENGIF-001", "INSP-ATA21-10-ENGIF-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0007"
+      title: "APU bleed compatibility"
+      text: >
+        The air supply subsystem shall accept bleed air from the APU as an alternate
+        source when engine bleed is unavailable.
+      type: "Interface"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-APUIF"]
+      safety:
+        safety_relevant: false
+        classification: "Minor"
+        derived_dal: "N/A"
+        hazard_ids: []
+      materials:
+        material_applicability: "No"
+      interfaces:
+        interface_refs: ["IF-ATA49-APU"]
+      verification_plan:
+        verification_methods: ["Analysis"]
+        acceptance_criteria:
+          - "APU bleed characteristics within acceptable range"
+        evidence_placeholders: ["AN-ATA21-10-APUIF-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0008"
+      title: "Material compatibility (high temp)"
+      text: >
+        All air supply subsystem components exposed to bleed air shall be constructed
+        from materials certified for the maximum operating temperature plus margin.
+      type: "Environmental"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-Materials"]
+      safety:
+        safety_relevant: true
+        classification: "Minor"
+        derived_dal: "N/A"
+        hazard_ids: []
+      materials:
+        material_applicability: "Yes"
+        material_constraints:
+          - "High-temperature alloys (Inconel, titanium, stainless)"
+          - "Thermal barrier coatings where required"
+          - "Compliant with CS-25.853 flammability"
+      interfaces:
+        interface_refs: []
+      verification_plan:
+        verification_methods: ["Test", "Inspection"]
+        acceptance_criteria:
+          - "Material certifications on file"
+          - "Temperature rating verified"
+        evidence_placeholders: ["TR-ATA21-10-MAT-001", "INSP-ATA21-10-MAT-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0009"
+      title: "Duct integrity under pressure"
+      text: >
+        All bleed air ducting shall maintain structural integrity at maximum operating
+        pressure with appropriate safety factor per applicable regulations.
+      type: "Performance"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-Ducting"]
+      safety:
+        safety_relevant: true
+        classification: "Major"
+        derived_dal: "DAL-C"
+        hazard_ids: ["HAZ-ATA21-10-0005"]
+      materials:
+        material_applicability: "Yes"
+        material_constraints: ["Pressure-rated", "Fatigue-resistant", "Leak-tight joints"]
+      interfaces:
+        interface_refs: []
+      verification_plan:
+        verification_methods: ["Test", "Analysis"]
+        acceptance_criteria:
+          - "Proof pressure test passed"
+          - "Fatigue analysis supports service life"
+        evidence_placeholders: ["TR-ATA21-10-DUCT-001", "AN-ATA21-10-DUCT-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
+
+    - requirement_id: "REQ-ATA21-10-0010"
+      title: "Maintainability access provisions"
+      text: >
+        The air supply subsystem installation shall provide adequate access for
+        inspection, maintenance, and component replacement per maintenance program.
+      type: "Functional"
+      level: "Subsystem"
+      allocated_to_object_ids: ["ATA21-10-Access"]
+      safety:
+        safety_relevant: false
+        classification: "No_Safety_Effect"
+        derived_dal: "N/A"
+        hazard_ids: []
+      materials:
+        material_applicability: "No"
+      interfaces:
+        interface_refs: []
+      verification_plan:
+        verification_methods: ["Inspection"]
+        acceptance_criteria:
+          - "Access panels and clearances verified"
+          - "Maintenance task times within targets"
+        evidence_placeholders: ["INSP-ATA21-10-ACCESS-001"]
+      trace_hooks:
+        LC2_design_ids: []
+        LC3_analysis_ids: []
+        LC4_test_ids: []
+        LC5_moc_records: []
+        LC6_docs: []
+        LC7_disposal_refs: []
