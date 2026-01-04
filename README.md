@@ -41,11 +41,15 @@ If a lifecycle phase does not apply to an object, it **MUST** be declared as **N
 ├── references/
 │   └── ata21/
 │       └── ata21-reference-schema.md   # ATA 21 decomposition & conventions
-└── examples/
-    └── ata21/
-        ├── ecs-21-system.json          # ECS System object
-        ├── ecs-21-30-subsystem.json    # Pressurization Control Subsystem
-        └── ofv-21-30-001-lru.json      # Outflow Valve LRU
+├── examples/
+│   └── ata21/
+│       ├── ecs-21-system.json          # ECS System object
+│       ├── ecs-21-30-subsystem.json    # Pressurization Control Subsystem
+│       └── ofv-21-30-001-lru.json      # Outflow Valve LRU
+└── programs/
+    └── AMPEL360-AIR-T/                 # Aircraft program with full ATA structure
+        ├── README.md                   # Program documentation
+        └── ATA-XX-<system>/            # ATA chapter folders with LC subfolders
 ```
 
 ## Schema
@@ -83,6 +87,19 @@ The framework includes reference decompositions for ATA chapters with canonical 
 *Additional ATA chapters will be added as the framework expands.*
 
 See [`examples/`](examples/) for schema-compliant JSON object instances.
+
+## Aircraft Programs
+
+The framework supports complete aircraft program structures with ATA chapter organization:
+
+| Program | Description | Structure |
+|---------|-------------|-----------|
+| [AMPEL360-AIR-T](programs/AMPEL360-AIR-T/) | Aircraft program | Full ATA chapters with LC subfolders |
+
+Each program includes:
+- Complete ATA 100 chapter structure (ATA 05-80)
+- LC1-LC7 subfolders for each chapter and subsystem
+- Subsystem decomposition for major systems (ATA 21, 24, 27, 28, 29, 32, 36, 71, 72)
 
 ## Compliance Outputs
 
