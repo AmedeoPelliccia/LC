@@ -1,0 +1,70 @@
+env_refs:
+  ata_chapter: "21-10"
+  program: "AMPEL360-AIR-T"
+  parent_system: "ECS-21"
+
+  operational_context:
+    altitude_range:
+      min_ft: 0
+      max_ft: 45000
+    bleed_air_sources:
+      - source_id: "ENGINE-L"
+        type: "Engine"
+        ata_ref: "ATA-71"
+      - source_id: "ENGINE-R"
+        type: "Engine"
+        ata_ref: "ATA-71"
+      - source_id: "APU"
+        type: "APU"
+        ata_ref: "ATA-49"
+    temperature_envelope:
+      min_celsius: -40
+      max_celsius: 650
+      note: "Max temp at engine bleed port; precooler reduces before delivery"
+    pressure_envelope:
+      max_psig: 45
+      regulated_psig: 35
+      note: "Regulated pressure at pack inlet"
+
+  environmental_conditions:
+    ambient_temperature_range:
+      ground_hot_day_celsius: 50
+      ground_cold_day_celsius: -54
+      cruise_oat_celsius: -57
+    humidity:
+      ground_max_rh_percent: 100
+      cruise_typical_rh_percent: 5
+    contamination_sources:
+      - "Engine oil seal leakage"
+      - "Hydraulic fluid ingestion"
+      - "De-icing fluid fumes"
+
+  assumptions:
+    - id: "ASSUMP-ATA21-10-0001"
+      statement: "Engine bleed air is available from both engines during normal operations."
+    - id: "ASSUMP-ATA21-10-0002"
+      statement: "APU bleed is available as backup on ground and up to 15,000 ft altitude."
+    - id: "ASSUMP-ATA21-10-0003"
+      statement: "Precooler reduces bleed temperature to acceptable levels before pack inlet."
+    - id: "ASSUMP-ATA21-10-0004"
+      statement: "Bleed air contamination events are rare but must be detectable."
+
+  interface_definitions:
+    - interface_id: "IF-ATA36-BLEED"
+      description: "Pneumatic bleed air supply from ATA 36"
+      ata_ref: "ATA-36"
+    - interface_id: "IF-ATA71-ENGINE"
+      description: "Engine bleed port interface"
+      ata_ref: "ATA-71"
+    - interface_id: "IF-ATA72-BLEED-PORT"
+      description: "Engine compressor bleed extraction"
+      ata_ref: "ATA-72"
+    - interface_id: "IF-ATA49-APU"
+      description: "APU bleed air supply"
+      ata_ref: "ATA-49"
+    - interface_id: "IF-ATA21-20-PACK"
+      description: "Air conditioning pack inlet"
+      ata_ref: "ATA-21-20"
+    - interface_id: "IF-ATA46-CAUTION"
+      description: "Crew alerting for bleed system faults"
+      ata_ref: "ATA-46"

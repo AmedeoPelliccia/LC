@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "schema_version": "1.0.0",
+    "created_date": "2026-01-04",
+    "authority": "Engineering Governance Board",
+    "applicable_standards": ["ARP4754A", "CS-25", "ATA-iSpec-2200"]
+  },
+  "object_definition": {
+    "object_id": "OFV-21-30-001",
+    "object_type": "LRU",
+    "name": "Outflow Valve Assembly",
+    "ata_chapter": "21-30",
+    "parent_object_id": "ECS-21-30",
+    "part_number": "PN-XXXX-XXXX",
+    "safety_relevant": true,
+    "design_assurance_level": "DAL-C"
+  },
+  "lifecycle_states": {
+    "LC1_Requirements": { "status": "Not_Started" },
+    "LC2_Design": { "status": "Not_Started" },
+    "LC3_Analysis": { "status": "Not_Started" },
+    "LC4_Integration": { "status": "Not_Started" },
+    "LC5_Certification": { "status": "Not_Started" },
+    "LC6_Operation": { "status": "Not_Started" },
+    "LC7_Decommissioning": { "status": "Not_Started" }
+  }
+}
